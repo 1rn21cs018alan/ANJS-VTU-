@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="lib.js"></script>
+    <style>
+    .text-style{
+        white-space: pre-wrap
+    }
+    </style>
+    <script >
+        function run(f,l){
+            if(f != undefined && f.length>0 && l!= undefined && l.length>0){
+                return f[0].toUpperCase()+f.slice(1).toLowerCase()+" "+l[0].toUpperCase()+l.slice(1).toLowerCase()
+            }
+            else{
+                return ""
+            }
+        }
+        var app=angular.module("TheAPP",[])
+        app.controller("CTRL",function($scope){
+            $scope.a="something"
+            $scope.run=run;
+            $scope.temp_l=""
+            $scope.temp_f=""
+            if ($scope.FName == undefined || $scope.LName==undefined){
+                $scope.FName=[];
+                $scope.LName=[];
+            }
+            $scope.add_name=function(){
+                if ($scope.FName == undefined || $scope.LName==undefined){
+                    $scope.FName=[];
+                    $scope.LName=[];
+                }
+                console.log("running")
+                $scope.FName.push($scope.temp_f)
+                $scope.LName.push($scope.temp_l)
+                console.log($scope.FName)
+                console.log($scope.LName)
+            }
+            $scope.print_name=function(){
+                Str=""
+                if ($scope.FName == undefined || $scope.LName==undefined){
+                    return Str;
+                }
+                for (let i=0;i<$scope.FName.length;i++){
+                    Str+=run($scope.FName[i],$scope.LName[i])+"\n";
+                }
+                return Str;
+            }
+        });
+    </script>
+</head>
+<body ng-app='TheAPP' ng-controller="CTRL">
+    {{a}}
+    <br>
+    {{run("kaIUJs","jULob")}}<br>
+    <input type="text" ng-model="temp_f">
+    <br>
+    <input type="text" ng-model="temp_l">
+    <br>
+    <input type="button" ng-click="add_name()" value="Enter">
+    <br>
+    <p class="text-style" ng-repeat="i in print_name().split()">{{i}}<br></p>
+    
+    <br>
+    <input type="number" ng-model="S1">
+    <br>
+    <input type="number" ng-model="S2">
+    <br><b>Sum=</b>
+    {{S1+S2}}
+
+</body>
+</html>
