@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="lib.js"></script>
+    </style>
+    <script >
+        var app=angular.module("TheAPP",[])
+        app.controller("CTRL",function($scope){
+            $scope.Char="+"
+            $scope.output=function(){
+                v1=$scope.v1
+                v2=$scope.v2
+                switch($scope.Char)
+                {
+                    case '+':return v1+v2;
+                    case '-':return v1-v2;
+                    case '/':return v1/v2;
+                    case '*':return v1*v2;
+                    case '%':return v1%v2;
+                }
+            }
+            $scope.setChar=function(chr){
+                $scope.Char=chr
+            }
+
+        });
+    </script>
+</head>
+<body ng-app='TheAPP' ng-controller="CTRL">
+    <input type="number" value=0.0 ng-model="v1">
+    {{Char}}
+    <input type="number" value=0.0 ng-model="v2">
+    <br>
+    <input type="button" ng-click="setChar('+')" value="+">
+    <input type="button" ng-click="setChar('-')" value="-">
+    <input type="button" ng-click="setChar('/')" value="/">
+    <input type="button" ng-click="setChar('*')" value="*">
+    <input type="button" ng-click="setChar('%')" value="%">
+    <br>
+    Result={{output()}}
+
+
+</body>
+</html>

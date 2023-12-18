@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="lib.js"></script>
+    </style>
+    <script >
+        function run(f,l){
+            if(f != undefined && f.length>0 && l!= undefined && l.length>0){
+                return f[0].toUpperCase()+f.slice(1).toLowerCase()+" "+l[0].toUpperCase()+l.slice(1).toLowerCase()
+            }
+            else{
+                return ""
+            }
+        }
+        var app=angular.module("TheAPP",[])
+        app.controller("CTRL",function($scope){
+            $scope.run=run;
+            $scope.temp_l="James"
+            $scope.temp_f="Jacob"
+        });
+    </script>
+</head>
+<body ng-app='TheAPP' ng-controller="CTRL">
+    <input type="text" ng-model="temp_f">
+    <br>
+    <input type="text" ng-model="temp_l">
+    <br>
+    {{run(temp_f,temp_l)}}
+
+</body>
+</html>

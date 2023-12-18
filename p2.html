@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="lib.js"></script>
+    <style>
+    .text-style{
+        white-space: pre-wrap
+    }
+    </style>
+    <script >
+        var app=angular.module("TheAPP",[])
+        app.controller("CTRL",function($scope){
+            if( $scope.items==undefined){
+            $scope.items=["brush","pan","comb"]}
+            $scope.item_name=""
+            $scope.add_name=function(){
+                if ($scope.item_name==""){
+                    return;}
+                $scope.items.push($scope.item_name)
+                console.log($scope.items)
+            }
+            $scope.del_name=function(){
+                if ($scope.item_name==""){
+                    comsole.log("noning")
+                    return;}
+                ind=$scope.items.indexOf($scope.item_name)
+                if (ind<0){return;}
+                $scope.items.splice(ind,1)
+                console.log($scope.items)
+            }
+        });
+    </script>
+</head>
+<body ng-app='TheAPP' ng-controller="CTRL">
+    <input type="text" ng-model="item_name">
+    <br>
+    <input type="button" ng-click="add_name()" value="Add">
+    <input type="button" ng-click="del_name()" value="Delete">
+    <br>
+    <p class="text-style" ng-repeat="i in items">{{i}}<br></p>
+
+
+</body>
+</html>
