@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="lib.js"></script>
+    </style>
+    <script >
+        var app=angular.module("TheAPP",[])
+        app.controller("CTRL",function($scope){
+            $scope.Char="+"
+            $scope.output=function(){
+                v1=$scope.v1
+                fact=1
+                $scope.sqr=v1*v1
+                for(let i=v1;i>0;i--){fact*=i}
+                $scope.fact=fact
+            }
+        });
+    </script>
+</head>
+<body ng-app='TheAPP' ng-controller="CTRL">
+    <input type="number" value=0.0 ng-model="v1"><br>{{output()}}
+    Square={{sqr}}
+    <br>
+    factorial={{fact}}
+
+
+</body>
+</html>
